@@ -18,8 +18,31 @@ function prepararJuego(imagenes) {
 
         $("#pokemon-objetivo").attr("src", pokemonObjetivo)
 
+        // 5 segundos
+        var tiempo = 5
+
+        // hago un conteo, y bajo un segundo cada vez
+        var timer = window.setInterval(function() {
+            tiempo--;
+            // actualizo el elemento, para que muestre
+            $('#conteo').text(tiempo);
+
+            // cuando llega a cero, limpio el intervalo
+            if (tiempo == 0) {
+                clearInterval(timer);
+                window.setTimeout(function () {
+                    alert("Perdiste");
+                }, 200);
+                // NO HAGAS MAS CLICKS EN LAS CARTAS
+                $(".carta").off("click");
+            }
+        }, 1000);
+
         // recorro todas las cartas y cuando hago click...
         $(".carta").click(function () {
+
+            // paro el contador!
+            clearInterval(timer);
 
             // LIMPIO TODAS LAS CARTAS
             var id = $(this).attr("id");
