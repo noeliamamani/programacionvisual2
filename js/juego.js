@@ -1,66 +1,59 @@
-function prepararJuego(imagenes) {
+function iniciarJuego(imagenes) {
+
+    // PASO: DESORDENA LAS IMAGENES
     var imagenesDesordenadas = crearImagenesDesordenadas(imagenes);
 
+    // PASO: CREA LAS CARTAS EN BASE A LAS IMAGENES DESORDENADAS!!
     for (var i = 0; i < imagenesDesordenadas.length; i++) {
         // creo los img y le pongo el id que cree arriba, y a todos la imagen base
         $('.grid').append('<img id="' + i + '" class="carta" src="' + imagenesDesordenadas[i] + '" alt="imagen">');
     }
 
 
-    // CUANDO HAGO CLICK EN INICIAR
+    // PASO: CUANDO HAGO CLICK EN INICIAR...
     $("#iniciar").click(function () {
 
-        // limpio
-        $(".carta").attr("src", "imagenes/base.png")
+        // PASO: LE PONE A TODAS LAS IMAGENES (EN REALIDAD LE PONE A TODO LO QUE TENGA LA CLASE carta) LA IMAGEN BASE
+        $(".carta").attr("src", "imagenes/base.png");
 
-        // me traigo una carta al azar
-        var pokemonObjetivo = obtenerImagenAlAzar(imagenes)
+        // PASO: OBTENGO AL AZAR EL OBJETIVO DEL MEMO TEST, Y LO PONGO EN LA IMAGEN pokemon-objetivo
+        var pokemonObjetivo = obtenerImagenAlAzar(imagenes);
+        $("#pokemon-objetivo").attr("src", pokemonObjetivo);
 
-        $("#pokemon-objetivo").attr("src", pokemonObjetivo)
-
-        // 5 segundos
-        var tiempo = 5
-
-        // hago un conteo, y bajo un segundo cada vez
+        // PASO: CREO UN CONTEO REGRESIVO, Y CUANDO LLEGA A CERO MUESTRO QUE PERDISTE!
+        var tiempo = 5;
         var timer = window.setInterval(function() {
-            tiempo--;
-            // actualizo el elemento, para que muestre
-            $('#conteo').text(tiempo);
-
-            // cuando llega a cero, limpio el intervalo
             if (tiempo == 0) {
                 clearInterval(timer);
-                window.setTimeout(function () {
-                    alert("Perdiste");
-                }, 200);
-                // NO HAGAS MAS CLICKS EN LAS CARTAS
+                alert("Perdiste");
                 $(".carta").off("click");
+            } else {
+                tiempo = tiempo - 1;
+                $('#conteo').text(tiempo);
             }
         }, 1000);
 
-        // recorro todas las cartas y cuando hago click...
         $(".carta").click(function () {
 
-            // paro el contador!
+            // PASO: CUANDO HAGO CLICK EN UNA CARTA, FRENO EL CONTEO REGRESIVO!!!!
             clearInterval(timer);
 
-            // LIMPIO TODAS LAS CARTAS
+            // PASO: Cambio la carta a la imagen que le corresponde
             var id = $(this).attr("id");
+            var imagenPokemon = imagenesDesordenadas[id];
+            $(this).attr("src", imagenPokemon);
 
-            // obtengo la imagen con ese id
-            var imagenPokemon = imagenesDesordenadas[id]
-
-            // le cambio la imagen al que hice click!!!
-            $(this).attr("src", imagenPokemon)
-
+            //
             if (imagenPokemon == $("#pokemon-objetivo").attr("src")) {
                 window.setTimeout(function () {
                     alert("Ganaste");
-                }, 200);
+                    reiniciar(imagenes);
+                }, 200); // MILISEGUNDOS....
 
             } else {
                 window.setTimeout(function () {
                     alert("Perdiste");
+                    reiniciar(imagenes);
                 }, 200);
             }
 
@@ -69,6 +62,16 @@ function prepararJuego(imagenes) {
         });
     })
 
+}
+
+function reiniciar(imagenes) {
+
+    // LIMPIO TODO
+    $('.grid img').remove(); // ahora si, no inventes -.-
+    $('#conteo').text("-");
+    $("#iniciar").off("click");
+
+    iniciarJuego(imagenes);
 }
 
 // le paso un array de imagenes, y me devuelve otro desordenado!
@@ -81,7 +84,8 @@ function crearImagenesDesordenadas(imagenes) {
         // toma un numero al azar, lo multiplica por la cantidad de elementos y lo redondea
         // me da un numero entr 0 y imagenes.length - 1
         // por ejemplo, si imagenes.length es igual a 4, me va a dar un valor entre 0 y 3
-        azar = Math.floor(Math.random() * imagenes.length);
+        // oseaaa, te da un numero al azar entre 0 y imagenes.length
+        azar = Math.floor(Math.random() * imagenes.length); //este cacho de codigo es complicado, ni yo se como funciona
 
         // si no existe lo agrego, hasta tener una lista de INDICES desordenados
         if (salieron.indexOf(azar) == -1) {
@@ -103,7 +107,7 @@ function crearImagenesDesordenadas(imagenes) {
 // obtengo una imagen al azar de la lista
 function obtenerImagenAlAzar(imagenes) {
 
-    var azar = Math.floor(Math.random() * imagenes.length);
+    var azar = Math.floor(Math.random() * imagenes.length); //este cacho de codigo es complicado, ni yo se como funciona
 
     return imagenes[azar]
 }
