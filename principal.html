@@ -8,72 +8,33 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 
+<style>
+    body {
+
+        background-image: url(imagenes/principal2.png);
+        background-size: 100vw 100vh;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+	background-position: top center;
+    }
+
+
+
+</style>
 
 <body>
-
-    <div class="contenedor">
-        <div class="cabecera">
-            <h1>MEMOTEST</h1>
-            <p>Hay imagenes iguales, encontralas!</p>
-        </div>
-
-        <br>
-        <div class="grid">
-            <!-- contenedor -->
-            <div class="pokemon">
-                <img src="imagenes/1.png" alt="carta1">
-            </div>
-            <div class="pokemon">
-                <img src="imagenes/3.png" alt="carta1">
-            </div>
-            <div class="pokemon">
-                <img src="imagenes/2.png" alt="carta1">
-            </div>
-
-            <div class="pokemon">
-                <img src="imagenes/4.png" alt="carta1">
-            </div>
-
-            <div class="pokemon">
-                <img src="imagenes/4.png" alt="carta1">
-            </div>
-            <div class="pokemon">
-                <img src="imagenes/3.png" alt="carta1">
-            </div>
-            <div class="pokemon">
-                <img src="imagenes/2.png" alt="carta1">
-            </div>
-
-            <div class="pokemon">
-                <img src="imagenes/1.png" alt="carta1">
-            </div>
-            <div class="pokemon">
-                <img src="imagenes/base.png" alt="carta1">
-            </div>
-
-        </div>
+    <div class="cabecera">
     </div>
+    <p id="clickaqui" style="display: block; text-align: center; margin-top: 450px;">Click aca para empezar</p>
+
+
     <script src="js/jquery-3.4.1.js"></script>
 
-
     <script>
-        /*        $(".a").click(function() {
-            alert("holi")
-        })
-
-        $(document).keydown(function() {
-            $(".grid").hide()
-        })*/
-
-
-
-
-        for (var a = 0; a < 10; a++) {
-            alert(a)
-            if (a == 4) {
-                alert("llegue")
-            } 
-        }
+        $('#clickaqui').one('click', function() {
+            window.location = "instrucciones.html";
+        });
 
     </script>
 

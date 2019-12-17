@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>juego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+
+<body>
+
+
+        <div class="cabecera">
+            <h1 style="margin-top: 150px; ">Nivel 1</h1>
+            <p style="text-align: center; margin-top: 150px;">Vas a ver muchos pokemones,
+                encontrá el que te mostramos en la imagen más grande!</p>
+               <p id="clickaqui" style="display: block; text-align: center; margin-top: 150px;">Click aca para comenzar</p>
+
+        </div>
+
+           
+    <script src="js/jquery-3.4.1.js"></script>
+
+    <script>
+        $('#clickaqui').one('click', function() {
+            window.location = "index.html";
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

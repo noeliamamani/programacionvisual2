@@ -11,60 +11,60 @@
 
 <body>
 
-<div class="contenedor">
-    <div class="cabecera">
-        <h1>MEMOTEST</h1>
-        <p>Hay imagenes iguales, encontralas!</p>
-    </div>
+    <div class="contenedor">
+        <div class="cabecera">
+            <h1>MEMOTEST</h1>
+        </div>
 
-    <br>
+        <br>
 
-    <div>
-        <span id="conteo">-</span>
-    </div>
-    <div>
-        <button id="iniciar">Iniciar!!</button>
-    </div>
-    <div>
-        <div class="grid nivel1">
+        <div>
+            <span id="conteo">-</span>
         </div>
         <div>
-            <img id="pokemon-objetivo" src="imagenes/base.png">
+            <button id="iniciar">Iniciar!!</button>
+        </div>
+        <div>
+            <div>
+                <img id="pokemon-objetivo" src="imagenes/base.png">
+            </div>
+            <div class="grid nivel1">
+            </div>
+
         </div>
     </div>
-</div>
-<script src="js/jquery-3.4.1.js"></script>
-<script src="js/juego.js"></script>
-<script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/juego.js"></script>
+    <script>
+        // array imagenes, se puede llamar pepito
+        var imagenes = [
+            "imagenes/1.png",
+            "imagenes/2.png",
+            "imagenes/3.png",
+            "imagenes/4.png",
+            "imagenes/1.png",
+            "imagenes/2.png",
+            "imagenes/3.png",
+            "imagenes/4.png",
+            "imagenes/1.png",
+            "imagenes/2.png",
+            "imagenes/3.png",
+            "imagenes/4.png",
+            "imagenes/1.png",
+            "imagenes/2.png",
+            "imagenes/3.png",
+            "imagenes/4.png",
+            "imagenes/1.png",
+            "imagenes/2.png",
+            "imagenes/3.png",
+            "imagenes/4.png",
+        ];
 
-    // array imagenes, se puede llamar pepito
-    var imagenes = [
-        "imagenes/1.png",
-        "imagenes/2.png",
-        "imagenes/3.png",
-        "imagenes/4.png",
-        "imagenes/1.png",
-        "imagenes/2.png",
-        "imagenes/3.png",
-        "imagenes/4.png",
-        "imagenes/1.png",
-        "imagenes/2.png",
-        "imagenes/3.png",
-        "imagenes/4.png",
-        "imagenes/1.png",
-        "imagenes/2.png",
-        "imagenes/3.png",
-        "imagenes/4.png",
-        "imagenes/1.png",
-        "imagenes/2.png",
-        "imagenes/3.png",
-        "imagenes/4.png",
-    ];
+        // aca arranca todo!!!
+        iniciarJuego(imagenes)
+        var nivel = 1;
 
-    // aca arranca todo!!!
-    iniciarJuego(imagenes)
-
-</script>
+    </script>
 
 
 </body>

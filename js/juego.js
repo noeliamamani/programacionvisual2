@@ -22,7 +22,7 @@ function iniciarJuego(imagenes) {
 
         // PASO: CREO UN CONTEO REGRESIVO, Y CUANDO LLEGA A CERO MUESTRO QUE PERDISTE!
         var tiempo = 5;
-        var timer = window.setInterval(function() {
+        var timer = window.setInterval(function () {
             if (tiempo == 0) {
                 clearInterval(timer);
                 alert("Perdiste");
@@ -47,14 +47,19 @@ function iniciarJuego(imagenes) {
             if (imagenPokemon == $("#pokemon-objetivo").attr("src")) {
                 window.setTimeout(function () {
                     alert("Ganaste");
-                    reiniciar(imagenes);
+                   if (nivel == 1){
+                        window.location = "instrucciones2.html";
+                    } else {
+                        window.location = "principal.html";
+                    }
+
                 }, 200); // MILISEGUNDOS....
 
             } else {
                 window.setTimeout(function () {
                     alert("Perdiste");
                     reiniciar(imagenes);
-                }, 200);
+                }, 150);
             }
 
             // NO HAGAS MAS CLICKS EN LAS CARTAS

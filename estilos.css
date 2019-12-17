@@ -12,12 +12,15 @@ body {
     font-family: "Mystery Quest", cursive;
     font-size: 150%;
     background: url("imagenes/fondo.jpg");
-background-repeat:no-repeat;
-background-position:center;
-        background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
 }
 
+p{
+    color: floralwhite;
+}
 
 .cabecera {
     text-align: center;
@@ -43,7 +46,7 @@ background-position:center;
 }
 
 .grid.nivel1 {
-    grid-template-columns: 100px 100px 100px 100px ;
+    grid-template-columns: 100px 100px 100px 100px;
 }
 
 .grid.nivel2 {
